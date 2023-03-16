@@ -9,7 +9,7 @@
 //    @Test
 //    void testGetArrayList() {
 //
-//        //create a new empty CustomIntegerArrayList
+//        // create a new empty CustomIntegerArrayList
 //        CustomIntegerArrayList arr1 = new CustomIntegerArrayList();
 //        arr1.add(2);
 //        arr1.add(0, 5);
@@ -26,7 +26,7 @@
 //        arr4Elements.add(200);
 //        arr4Elements.add(500);
 //
-//        //create a new CustomIntegerArrayList with the elements in the given ArrayList
+//        // create a new CustomIntegerArrayList with the elements in the given ArrayList
 //        CustomIntegerArrayList arr4 = new CustomIntegerArrayList(arr4Elements);
 //
 //        ArrayList<Integer> lst4 = new ArrayList<Integer>();
@@ -36,7 +36,30 @@
 //
 //        assertEquals(lst4, arr4.getArrayList());
 //
-//        // TODO write at least 3 additional test cases
+//        CustomIntegerArrayList arr5 = new CustomIntegerArrayList();
+//        ArrayList<Integer> lst5 = new ArrayList<Integer>();
+//        assertEquals(lst5, arr5.getArrayList());
+//
+//        CustomIntegerArrayList arr6 = new CustomIntegerArrayList();
+//        arr6.add(7);
+//        ArrayList<Integer> lst6 = new ArrayList<Integer>();
+//        lst6.add(7);
+//        assertEquals(lst6, arr6.getArrayList());
+//
+//        CustomIntegerArrayList arr7 = new CustomIntegerArrayList();
+//        arr7.add(0, 7);
+//        ArrayList<Integer> lst7 = new ArrayList<Integer>();
+//        lst7.add(0, 7);
+//        assertEquals(lst7, arr7.getArrayList());
+//
+//        CustomIntegerArrayList arr8 = new CustomIntegerArrayList();
+//        arr8.add(0, 7);
+//        arr8.add(1, 8);
+//        ArrayList<Integer> lst8 = new ArrayList<Integer>();
+//        lst8.add(0, 7);
+//        lst8.add(1, 8);
+//        assertEquals(lst8, arr8.getArrayList());
+//
 //    }
 //
 //    @Test
@@ -55,7 +78,24 @@
 //        assertEquals((int) lst1.get(1), (int) arr1.get(1));
 //        assertEquals((int) lst1.get(2), (int) arr1.get(2));
 //
-//        // TODO write at least 3 additional test cases
+//        // Test with empty list
+//        CustomIntegerArrayList arr2 = new CustomIntegerArrayList();
+//        assertThrows(IndexOutOfBoundsException.class, () -> {
+//            arr2.get(0);
+//        });
+//
+//        // Test with single element list
+//        CustomIntegerArrayList arr3 = new CustomIntegerArrayList();
+//        arr3.add(5);
+//        assertEquals(5, arr3.get(0));
+//
+//        // Test with large list
+//        CustomIntegerArrayList arr4 = new CustomIntegerArrayList();
+//        for (int i = 0; i < 100; i++) {
+//            arr4.add(i);
+//        }
+//        assertEquals(0, arr4.get(0));
+//        assertEquals(50, arr4.get(50));
 //    }
 //
 //    @Test
