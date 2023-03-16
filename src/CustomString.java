@@ -1,12 +1,6 @@
-////public class CustomString {
-////}
+//import static org.junit.jupiter.api.Assertions.assertEquals;
 //
-//package customstring;
-//
-//        import static org.junit.jupiter.api.Assertions.assertEquals;
-//
-//        import java.util.*;
-//        import java.lang.*;
+//import java.util.*;
 //
 ///**
 // * In this assignment, you will implement a simple class called CustomString.  This class represents a more customizable version
@@ -41,8 +35,10 @@
 //     * Initializes isSet to false.
 //     */
 //    public CustomString() {
-//        this.isSet=false;
-//        this.myString=null;
+//        // TODO Implement constructor
+//        myString = null;
+//        isSet = false;
+//
 //    }
 //
 //    // methods
@@ -53,11 +49,10 @@
 //     * @return current string
 //     */
 //    public String getString() {
-//        if (this.myString==null)
+//        if (!isSet || myString == null) {
 //            return null;
-//        else if (this.myString!=null)
-//            isSet = true;
-//        return this.myString;
+//        }
+//        return myString;
 //    }
 //
 //    /**
@@ -66,9 +61,12 @@
 //     * @param string value to be set
 //     */
 //    public void setString(String string) {
-//        this.myString = string;
-//        this.isSet=true;
-//        // TODO Implement method
+//        if (string == null) {
+//            isSet = false;
+//        } else {
+//            myString = string;
+//            isSet = true;
+//        }
 //    }
 //
 //    /**
@@ -89,15 +87,30 @@
 //     * @return new string in which the alphabetical characters specified in the arg are removed
 //     */
 //    public String remove(String arg) {
-//        String newstr="";
-//        for(int i=0;i<this.myString.length;i++)
-//        {
-//            if(agr.indexOf(this.myString[i])==-1)
-//            {
-//                newstr+=this.myString[i];
+//        if (!isSet || myString == null || myString.isEmpty()) {
+//            return "";
+//        }
+//
+//        if (arg == null || arg.isEmpty()) {
+//            return myString;
+//        }
+//
+//        StringBuilder result = new StringBuilder();
+//        Set<Character> toRemove = new HashSet<>();
+//        for (char c : arg.toCharArray()) {
+//            if (Character.isLetter(c)) {
+//                toRemove.add(Character.toLowerCase(c));
+//                toRemove.add(Character.toUpperCase(c));
 //            }
 //        }
-//        return newstr;
+//
+//        for (char c : myString.toCharArray()) {
+//            if (!toRemove.contains(Character.toLowerCase(c))) {
+//                result.append(c);
+//            }
+//        }
+//
+//        return result.toString();
 //    }
 //
 //    /**
@@ -119,26 +132,31 @@
 //     * @return new string in which the alphabetical characters specified in the arg are reversed
 //     */
 //    public String reverse(String arg) {
-//        String newstr="";
-//        for(int i=0;i<this.myString.length;i++)
-//        {
-//            if(agr.indexOf(this.myString[i])==-1)
-//            {
-//                newstr+=this.myString[i];
-//            }
-//            else{
-//                if (Character.isUpperCase(this.myString[i]))
-//                {
-//                    newstr = newstr+Character.toLowerCase(this.myString[i]);
+//        if (myString == null || myString.isEmpty()) {
+//            return "";
+//        }
+//        if (arg == null || arg.isEmpty()) {
+//            return myString;
+//        }
+//        StringBuilder sb = new StringBuilder(myString.length());
+//        for (int i = 0; i < myString.length(); i++) {
+//            char c = myString.charAt(i);
+//            if (Character.isAlphabetic(c) && arg.indexOf(Character.toLowerCase(c)) != -1) {
+//                if (Character.isUpperCase(c)) {
+//                    sb.append(Character.toLowerCase(c));
+//                } else {
+//                    sb.append(Character.toUpperCase(c));
 //                }
-//                else if (Character.isLowerCase(this.myString[i]))
-//                {
-//                    newstr = newstr+Character.toUpperCase(this.myString[i]);
-//                }
+//            } else {
+//                sb.append(c);
 //            }
 //        }
-//        return newstr;
+//        return sb.toString();
 //    }
+//
+//
+//
+//
 //
 //    /**
 //     * Returns a new string version of the current string where all the letters either >= or <= the given char n, are removed.
@@ -165,9 +183,13 @@
 //     * @return new string with letters removed
 //     */
 //    public String filterLetters(char n, boolean more) {
-//        // TODO Implement method
+//        if (myString == null || !Character.isLetter(n)) {
+//            return "";
+//        }
 //
-//        return null;
+//        String regex = more ? "(?i)[" + Character.toUpperCase(n) + "-Z]" : "(?i)[A-" + Character.toUpperCase(n) + "]";
+//        return myString.replaceAll(regex, "");
 //    }
-//}
 //
+//
+//}

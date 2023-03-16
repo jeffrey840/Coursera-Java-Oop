@@ -23,8 +23,13 @@
 //     * @return number of times element is in array
 //     */
 //    public int howMany(int[] array, int element) {
-//        // TODO Implement method
-//        return 0;
+//        int count = 0;
+//        for (int i = 0; i < array.length; i++) {
+//            if (array[i] == element) {
+//                count++;
+//            }
+//        }
+//        return count;
 //    }
 //
 //    /**
@@ -44,9 +49,22 @@
 //     * @param array to search
 //     * @return max number in array
 //     */
+//    // public int findMax(int[] array) {
+//    // 	// TODO Implement method
+//    // 	return 0;
+//    // }
+//
 //    public int findMax(int[] array) {
-//        // TODO Implement method
-//        return 0;
+//        if (array.length == 0) {
+//            return -1;
+//        }
+//        int max = array[0];
+//        for (int i = 1; i < array.length; i++) {
+//            if (array[i] > max) {
+//                max = array[i];
+//            }
+//        }
+//        return max;
 //    }
 //
 //    /**
@@ -69,8 +87,19 @@
 //     * @return ArrayList containing every instance of the max
 //     */
 //    public ArrayList<Integer> maxArray(int[] array) {
-//        // TODO Implement method
-//        return null;
+//        int max = findMax(array);
+//        if (max == -1) {
+//            return null;
+//        }
+//
+//        ArrayList<Integer> result = new ArrayList<>();
+//        for (int i = 0; i < array.length; i++) {
+//            if (array[i] == max) {
+//                result.add(max);
+//            }
+//        }
+//
+//        return result;
 //    }
 //
 //    /**
@@ -91,7 +120,15 @@
 //     * @param array to search for zeros
 //     */
 //    public void swapZero(int[] array) {
-//        // TODO Implement method
-//
+//        int len = array.length;
+//        int j = 0;
+//        for (int i = 0; i < len; i++) {
+//            if (array[i] != 0) {
+//                int temp = array[i];
+//                array[i] = array[j];
+//                array[j] = temp;
+//                j++;
+//            }
+//        }
 //    }
 //}
